@@ -1,4 +1,5 @@
 # go-microservice-apps
 
-- `go get -u github.com/gorilla/mux` install gorilla mux 
-- `go get -u github.com/go-playground/validator` install validator
+- `go get` install depedency
+- `make swagger` create swagger yaml for api documentation 
+    - `brew tap go-swagger/go-swagger && brew install go-swagger`

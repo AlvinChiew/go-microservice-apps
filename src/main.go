@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/go-openapi/runtime/middleware"
-	
+
 	"github.com/AlvinChiew/go-microservice-apps/data"
 	"github.com/AlvinChiew/go-microservice-apps/handlers"
 	"github.com/gorilla/mux"
@@ -48,7 +48,7 @@ func main() {
 	sh := middleware.Redoc(opts, nil)
 
 	getR.Handle("/docs", sh)
-	getR.Handle("/swagger.yaml", http.FileServer(http.Dir("./")))
+	getR.Handle("/swagger.yaml", http.FileServer(http.Dir("../")))
 
 	// create a new server
 	s := http.Server{

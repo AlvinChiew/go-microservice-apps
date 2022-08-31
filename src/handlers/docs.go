@@ -13,6 +13,8 @@
 //	- application/json
 //
 // swagger:meta
+//
+//lint:ignore
 package handlers
 
 import "github.com/AlvinChiew/go-microservice-apps/data"
