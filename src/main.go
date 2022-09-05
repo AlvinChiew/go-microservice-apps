@@ -40,7 +40,7 @@ func main() {
 	getR := sm.Methods(http.MethodGet).Subrouter()
 	getR.HandleFunc("/health", check_health)
 	getR.HandleFunc("/", serve_homepage)
-	getR.HandleFunc("/host", handlers.GetHostName)
+	getR.HandleFunc("/host", handlers.GetHostDetails)
 
 	// create a new server
 	s := http.Server{

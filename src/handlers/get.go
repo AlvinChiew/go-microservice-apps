@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net"
@@ -8,20 +9,25 @@ import (
 	"os"
 )
 
-func GetHostName(w http.ResponseWriter, r *http.Request) {
+func GetHostDetails(w http.ResponseWriter, r *http.Request) {
 	log.Println("Fetching host details...")
 	hostname, err := os.Hostname()
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(hostname)
-}
 
-func GetHostIP(w http.ResponseWriter, r *http.Request) net.IP {
 	conn, err := net.Dial("udp", "8.8.8.8:80")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer conn.Close()
-	return conn.LocalAddr().(*net.UDPAddr).IP
+	ip_addr := conn.LocalAddr().(*net.UDPAddr).IP
+
+	fmt.Println(hostname, ip_addr)
+
+	response := map[string]string{
+		"hostname": hostname,
+		"ip":       ip_addr.String(),
+	}
+	json.NewEncoder(w).Encode(response)
 }
