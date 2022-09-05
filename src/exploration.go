@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"math"
+	"test-ground/src/utilities"
 )
 
 func main() {
@@ -67,6 +68,7 @@ func main() {
 	increment_pointer(&j)
 	fmt.Println(j) //pointer
 
+	fmt.Println(utilities.Add(1, 3)) //pointer
 }
 
 func sum(x int, y int) int {
