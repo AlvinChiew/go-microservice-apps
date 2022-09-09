@@ -7,7 +7,7 @@ import (
 )
 
 // swagger:route PUT /products products updateProduct
-// Update a products details
+// Update details of a product
 //
 // responses:
 //	201: noContentResponse

@@ -40,7 +40,7 @@ paths:
             tags:
                 - products
         put:
-            description: Update a products details
+            description: Update details of a product
             operationId: updateProduct
             parameters:
                 - description: |-
@@ -68,7 +68,7 @@ paths:
                 - products
     /products/{id}:
         delete:
-            description: Update a products details
+            description: Delete a product from list
             operationId: deleteProduct
             responses:
                 "201":
@@ -80,7 +80,7 @@ paths:
             tags:
                 - products
         get:
-            description: Return a list of products from the database
+            description: Return details of product from the database by id
             operationId: listSingle
             responses:
                 "200":
