@@ -5,7 +5,7 @@ metadata:
   labels:
     app: get-host-details
 spec:
-  replicas: 1 # db scaled with stateful-set, not deployment
+  replicas: 3
   selector:
     matchLabels:
       app: get-host-details
@@ -17,6 +17,7 @@ spec:
       containers:
         - name: get-host-details
           image: go-get-host-details:0.1.0
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9090
 
@@ -33,4 +34,4 @@ spec:
     - protocol: TCP
       port: 9090 # any port
       targetPort: 9090 # container port
-      nodePort: 9090 # node to be exposed externally
+      nodePort: 30300 # node to be exposed externally

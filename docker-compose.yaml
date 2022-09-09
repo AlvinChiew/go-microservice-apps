@@ -1,0 +1,15 @@
+version: "3,9"
+services:
+  get-host-details:
+    build:
+      context: .
+      dockerfile: dockerfile
+    image: get-host-details:0.1.0
+    ports:
+      - "90:90"
+    restart: always
+    networks:
+      - get-host-details
+
+networks:
+  get-host-details:
