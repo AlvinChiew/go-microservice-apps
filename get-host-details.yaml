@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: get-host-details-deployment
+  labels:
+    app: get-host-details
+spec:
+  replicas: 1 # db scaled with stateful-set, not deployment
+  selector:
+    matchLabels:
+      app: get-host-details
+  template:
+    metadata:
+      labels:
+        app: get-host-details # pod label
+    spec:
+      containers:
+        - name: get-host-details
+          image: go-get-host-details:0.1.0
+          ports:
+            - containerPort: 9090
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: get-host-details-service
+spec:
+  type: NodePort # make service externallly accessible. By default services are internal
+  selector:
+    app: get-host-details # should match pod label
+  ports:
+    - protocol: TCP
+      port: 9090 # any port
+      targetPort: 9090 # container port
+      nodePort: 9090 # node to be exposed externally

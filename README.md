@@ -5,8 +5,12 @@
 1. Install [minikube](https://minikube.sigs.k8s.io/docs/start/) 
     - `brew install minikube`.
 
+1. Setup minikube
+    - `minikube start --driver docker --ports=127.0.0.1:9090:9090`
+
 1. tie docker alias to docker in minikube
-    - `eval $(minikube docker-env)`
+    - ubuntu `eval $(minikube docker-env)`
+    - windows bash `eval $(minikube -p minikube docker-env)`
 
 1. Build docker image & create container
     - `docker build -t go-get-host-details:0.1.0 ./;` 
